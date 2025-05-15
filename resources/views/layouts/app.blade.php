@@ -50,6 +50,39 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a id="navbarMasterDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Master Data') }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarMasterDropdown">
+                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                        {{ __('Member') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('publisher') }}">
+                                        {{ __('Book Publisher') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('book') }}">
+                                        {{ __('Book') }}
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarTransactionDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Transaction') }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarTransactionDropdown">
+                                    <a class="dropdown-item" href="{{ route('borrow') }}">
+                                        {{ __('Borrowing History') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('return') }}">
+                                        {{ __('Returning History') }}
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
