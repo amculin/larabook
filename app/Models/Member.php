@@ -18,7 +18,7 @@ class Member extends Model
     protected $fillable = [
         'id',
         'full_name',
-        'birthdate',
+        'birth_date',
         'address',
         'created_at',
         'updated_at'

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
+use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
@@ -24,15 +24,30 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('members.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMemberRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required|integer|digits:16',
+            'full_name' => 'required|string',
+            'birth_date' => 'required|date',
+            'address' => 'required'
+        ]);
+
+        Member::create([
+            'id' => $request->id,
+            'full_name' => $request->full_name,
+            'birth_date' => $request->birth_date,
+            'address' => $request->address,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->route('member.index');
     }
 
     /**

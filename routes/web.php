@@ -19,4 +19,5 @@ Route::get('/returnings', [App\Http\Controllers\HomeController::class, 'index'])
 Route::middleware('auth')->group(function () {
     Route::get('/members', [App\Http\Controllers\MemberController::class, 'index'])->name('member.index');
     Route::get('/members/create', [App\Http\Controllers\MemberController::class, 'create'])->name('member.create');
+    Route::post('/members/store', [App\Http\Controllers\MemberController::class, 'store'])->name('member.store');
 });
