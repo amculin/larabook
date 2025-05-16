@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publisher;
+use App\Http\Requests\UpdatePublisherRequest;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
@@ -55,17 +56,23 @@ class PublisherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Publisher $publisher)
     {
-        //
+        return view('publishers.edit', compact('publisher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
-        //
+        $publisher->fill($request->validated());
+
+        $publisher->updated_at = date('Y-m-d H:i:s');
+
+        $publisher->save();
+    
+        return redirect()->route('publishers.index');
     }
 
     /**
