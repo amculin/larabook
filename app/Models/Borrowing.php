@@ -10,6 +10,18 @@ class Borrowing extends Model
 {
     /** @use HasFactory<\Database\Factories\BorrowingFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'book_id',
+        'member_id',
+        'created_at',
+        'updated_at'
+    ];
     
     /**
      * The table associated with the model.
@@ -32,5 +44,13 @@ class Borrowing extends Model
     public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class);
+    }
+
+    /**
+     * Get the book that borrowed by the member.
+     */
+    public function book(): BelongsTo
+    {
+        return $this->belongsTo(Book::class);
     }
 }
