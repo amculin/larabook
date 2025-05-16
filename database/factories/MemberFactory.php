@@ -33,7 +33,7 @@ class MemberFactory extends Factory
         $address .= $identity->getProvince()->name;
 
         return [
-            'id' => $identity->getNIK(),
+            'nik' => $identity->getNIK(),
             'full_name' => fake()->name(),
             'birth_date' => $birthDate->year . '-' . $birthDate->month . '-' . $birthDate->date,
             'address' => $address,
