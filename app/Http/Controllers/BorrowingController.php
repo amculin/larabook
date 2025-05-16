@@ -19,6 +19,7 @@ class BorrowingController extends Controller
         $borrowings = Borrowing::with('book:id,title')
             ->with('member:id,full_name')
             ->latest('created_at')
+            ->borrowed()
             ->simplePaginate(10);
 
         return view('borrowings.index', compact('borrowings'));
@@ -103,6 +104,11 @@ class BorrowingController extends Controller
      */
     public function destroy(Borrowing $borrowing)
     {
-        //
+        $borrowing->is_borrowed = 0;
+        $borrowing->updated_at = date('Y-m-d H:i:s');
+
+        $borrowing->save();
+    
+        return redirect()->route('borrowings.index');
     }
 }
