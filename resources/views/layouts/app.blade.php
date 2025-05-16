@@ -53,7 +53,7 @@
                                     <a class="dropdown-item" href="{{ route('members.index') }}">
                                         {{ __('Member') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('publisher') }}">
+                                    <a class="dropdown-item" href="{{ route('publishers.index') }}">
                                         {{ __('Book Publisher') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('book') }}">
