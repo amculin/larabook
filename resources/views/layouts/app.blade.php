@@ -68,7 +68,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarTransactionDropdown">
-                                    <a class="dropdown-item" href="{{ route('borrow') }}">
+                                    <a class="dropdown-item" href="{{ route('borrowings.index') }}">
                                         {{ __('Borrowing History') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('return') }}">

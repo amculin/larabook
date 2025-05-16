@@ -5,7 +5,7 @@
     <div class="page-header d-print-none">
         <div class="row g-2 align-items-center">
             <div class="col">
-                <h2 class="page-title">Member List</h2>
+                <h2 class="page-title">Borrowed Book List</h2>
             </div>
         </div>
     </div>
@@ -14,8 +14,8 @@
     <div class="container-xl">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('members.create') }}" class="btn btn-primary d-none d-sm-inline-block">
-                    <i class="bi bi-plus"></i> Create
+                <a href="{{ route('borrowings.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <i class="bi bi-plus"></i> Borrow A Book
                 </a>
             </div>
             <div class="table-responsive card-body p-0">
@@ -23,29 +23,27 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>ID</th>
-                            <th>Full Name</th>
-                            <th>Birth Date</th>
-                            <th>Address</th>
+                            <th>Book Title</th>
+                            <th>Borrower Name</th>
+                            <th>Borrow Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($members as $index => $member)
+                        @foreach($borrowings as $index => $borrowing)
                             <tr>
-                                <td>{{ $members->firstItem() + $index }}</td>
-                                <td>{{ $member->nik }}</td>
-                                <td>{{ $member->full_name }}</td>
-                                <td>{{ $member->birth_date }}</td>
-                                <td>{{ $member->address }}</td>
+                                <td>{{ $borrowings->firstItem() + $index }}</td>
+                                <td>{{ $borrowing->book->title }}</td>
+                                <td>{{ $borrowing->member->full_name }}</td>
+                                <td>{{ $borrowing->created_at }}</td>
                                 <td style="display: inline-flex;">
-                                    <a href="{{ route('members.edit', $member) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a> 
-                                    <form action="{{ route('members.destroy', $member) }}" method="POST" class="inline">
+                                    <a href="{{ route('borrowings.edit', $borrowing) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a> 
+                                    <form action="{{ route('borrowings.destroy', $borrowing) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="text-red-500 btn" type="submit"
-                                            onClick="return confirm('Are you sure you want to delete this member?')">
-                                            <i class="bi bi-trash3"></i>
+                                            onClick="return confirm('Are you sure you want to return this book?')">
+                                            <i class="bi bi-box-arrow-in-down-left"></i>
                                         </button>
                                     </form>
                                 </td>
@@ -55,7 +53,7 @@
                 </table>
             </div>
 
-            <div class="card-body pt-0">{{ $members->links() }}</div>
+            <div class="card-body pt-0">{{ $borrowings->links() }}</div>
         </div>
     </div>
 </div>

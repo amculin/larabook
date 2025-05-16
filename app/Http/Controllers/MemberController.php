@@ -33,14 +33,14 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required|integer|digits:16|unique:members',
+            'nik' => 'required|integer|digits:16|unique:members',
             'full_name' => 'required|string',
             'birth_date' => 'required|date',
             'address' => 'required'
         ]);
 
         Member::create([
-            'id' => $request->id,
+            'nik' => $request->nik,
             'full_name' => $request->full_name,
             'birth_date' => $request->birth_date,
             'address' => $request->address,
