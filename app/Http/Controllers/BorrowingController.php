@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateBorrowingRequest;
 use App\Models\Book;
-use App\Models\Borrowing;
+use App\Models\Transaction as Borrowing;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
