@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateBookRequest;
 use App\Models\Book;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
@@ -64,17 +65,25 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        $publishers = Publisher::pluck('name', 'id');
+
+        return view('books.edit', compact('publishers', 'book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $book->fill($request->validated());
+
+        $book->updated_at = date('Y-m-d H:i:s');
+
+        $book->save();
+    
+        return redirect()->route('books.index');
     }
 
     /**
