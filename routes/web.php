@@ -17,4 +17,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('/borrowings', App\Http\Controllers\BorrowingController::class);
     Route::resource('/returnings', App\Http\Controllers\ReturningController::class);
     Route::get('/returnings/members/{bookId}', [App\Http\Controllers\ReturningController::class, 'members'])->name('returnings.members');
+    Route::get('/dashboard', [App\Http\Controllers\SummaryController::class, 'index'])->name('dashboard');
 });
