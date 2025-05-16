@@ -18,13 +18,13 @@
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label for="id" class="col-md-4 col-form-label text-md-end">{{ __('NIK') }}</label>
+                        <label for="nik" class="col-md-4 col-form-label text-md-end">{{ __('NIK') }}</label>
 
                         <div class="col-md-6">
-                            <input type="number" max="9999999999999999" id="id" class="form-control @error('id') is-invalid @enderror"
-                                name="id" value="{{ old('id', $member->id) }}" required readonly autofocus />
+                            <input type="number" max="9999999999999999" id="nik" class="form-control @error('nik') is-invalid @enderror"
+                                name="nik" value="{{ old('nik', $member->nik) }}" required autofocus />
 
-                            @error('id')
+                            @error('nik')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

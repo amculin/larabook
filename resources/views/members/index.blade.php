@@ -34,7 +34,7 @@
                         @foreach($members as $index => $member)
                             <tr>
                                 <td>{{ $members->firstItem() + $index }}</td>
-                                <td>{{ $member->id }}</td>
+                                <td>{{ $member->nik }}</td>
                                 <td>{{ $member->full_name }}</td>
                                 <td>{{ $member->birth_date }}</td>
                                 <td>{{ $member->address }}</td>

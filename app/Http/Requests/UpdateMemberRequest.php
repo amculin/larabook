@@ -22,6 +22,7 @@ class UpdateMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nik' => 'required|integer|digits:16|unique:members',
             'full_name' => 'required|string',
             'birth_date' => 'required|date',
             'address' => 'required'
