@@ -39,7 +39,7 @@
                                 <td>{{ $member->birth_date }}</td>
                                 <td>{{ $member->address }}</td>
                                 <td style="display: inline-flex;">
-                                    <a href="{{ route('members.edit', $member) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a> 
+                                    <a href="{{ route('members.edit', $member) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a>
                                     <form action="{{ route('members.destroy', $member) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')

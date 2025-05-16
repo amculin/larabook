@@ -9,13 +9,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', [App\Http\Controllers\HomeController::class, 'index'])->name('user');
-Route::get('/returnings', [App\Http\Controllers\HomeController::class, 'index'])->name('return');
-
 
 Route::middleware('auth')->group(function () {
     Route::resource('/members', App\Http\Controllers\MemberController::class);
     Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
     Route::resource('/books', App\Http\Controllers\BookController::class);
     Route::resource('/borrowings', App\Http\Controllers\BorrowingController::class);
+    Route::resource('/returnings', App\Http\Controllers\ReturningController::class);
+    Route::get('/returnings/members/{bookId}', [App\Http\Controllers\ReturningController::class, 'members'])->name('returnings.members');
 });

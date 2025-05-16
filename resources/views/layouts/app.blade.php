@@ -71,7 +71,7 @@
                                     <a class="dropdown-item" href="{{ route('borrowings.index') }}">
                                         {{ __('Borrowing History') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('return') }}">
+                                    <a class="dropdown-item" href="{{ route('returnings.index') }}">
                                         {{ __('Returning History') }}
                                     </a>
                                 </div>

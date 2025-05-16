@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Borrowing extends Model
+class Transaction extends Model
 {
-    /** @use HasFactory<\Database\Factories\BorrowingFactory> */
+    /** @use HasFactory<\Database\Factories\TransactionFactory> */
     use HasFactory;
+
+    const IS_BORROWED = 1;
+    const IS_RETURNED = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -23,20 +26,21 @@ class Borrowing extends Model
         'created_at',
         'updated_at'
     ];
-    
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'transactions';
 
     /**
      * Scope a query to only include borrowed books.
      */
     public function scopeBorrowed(Builder $query): void
     {
-        $query->where('is_borrowed', 1);
+        $query->where('is_borrowed', self::IS_BORROWED);
+    }
+
+    /**
+     * Scope a query to only include returned books.
+     */
+    public function scopeReturned(Builder $query): void
+    {
+        $query->where('is_borrowed', self::IS_RETURNED);
     }
 
     /**
