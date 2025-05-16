@@ -26,7 +26,6 @@
                             <th>Book Title</th>
                             <th>Borrower Name</th>
                             <th>Returned Date</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,17 +35,6 @@
                                 <td>{{ $returning->book->title }}</td>
                                 <td>{{ $returning->member->full_name }}</td>
                                 <td>{{ $returning->updated_at }}</td>
-                                <td style="display: inline-flex;">
-                                    <a href="{{ route('returnings.edit', $returning) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a> 
-                                    <form action="{{ route('returnings.destroy', $returning) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="text-red-500 btn" type="submit"
-                                            onClick="return confirm('Are you sure you want to return this book?')">
-                                            <i class="bi bi-box-arrow-in-down-left"></i>
-                                        </button>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
