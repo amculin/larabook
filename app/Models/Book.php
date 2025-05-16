@@ -4,9 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Book extends Model
 {
     /** @use HasFactory<\Database\Factories\BookFactory> */
     use HasFactory;
+
+    /**
+     * Get the publisher that publish the book.
+     */
+    public function publisher(): BelongsTo
+    {
+        return $this->belongsTo(Publisher::class);
+    }
 }
