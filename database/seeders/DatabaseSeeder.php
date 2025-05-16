@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             MemberSeeder::class,
             PublisherSeeder::class,
             BookSeeder::class,
-            TransactionSeeder::class
+            TransactionSeeder::class,
+            SummarySeeder::class,
         ]);
     }
 }
