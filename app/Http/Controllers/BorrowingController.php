@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateBorrowingRequest;
 use App\Models\Book;
 use App\Models\Borrowing;
 use App\Models\Member;
@@ -73,15 +74,28 @@ class BorrowingController extends Controller
      */
     public function edit(Borrowing $borrowing)
     {
-        //
+        $books = Book::orderBy('title', 'asc')
+            ->where('stock', '>', 0)
+            ->pluck('title', 'id');
+
+        $members = Member::orderBy('full_name', 'asc')
+            ->pluck('full_name', 'id');
+
+        return view('borrowings.edit', compact('books', 'members', 'borrowing'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Borrowing $borrowing)
+    public function update(UpdateBorrowingRequest $request, Borrowing $borrowing)
     {
-        //
+        $borrowing->fill($request->validated());
+
+        $borrowing->updated_at = date('Y-m-d H:i:s');
+
+        $borrowing->save();
+    
+        return redirect()->route('borrowings.index');
     }
 
     /**
