@@ -22,7 +22,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('publishers.create');
     }
 
     /**
@@ -30,7 +30,18 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'address' => 'required'
+        ]);
+
+        Publisher::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->route('publishers.index');
     }
 
     /**
