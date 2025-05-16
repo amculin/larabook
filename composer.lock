@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aaaebff5f3d5bff8de201e2acedbfdf1",
+    "content-hash": "a07cd4780c7038a180a0a2a75ac6d2a1",
     "packages": [
+        {
+            "name": "amculin/ektp-generator",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amculin/ektp-nik-generator.git",
+                "reference": "ba1e43407f30691027533f8c5f84ac5b8a85e840"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amculin/ektp-nik-generator/zipball/ba1e43407f30691027533f8c5f84ac5b8a85e840",
+                "reference": "ba1e43407f30691027533f8c5f84ac5b8a85e840",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "amculin\\ektp\\generator\\": "source/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fahmi Auliya Tsani",
+                    "email": "amixcustomlinux@gmail.com",
+                    "homepage": "https://github.com/amculin"
+                }
+            ],
+            "description": "Random Indonesian ID (NIK) generator using PHP",
+            "keywords": [
+                "ektp",
+                "generator",
+                "identity",
+                "indonesia",
+                "ktp",
+                "nik",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/amculin/ektp-nik-generator/issues",
+                "source": "https://github.com/amculin/ektp-nik-generator/tree/0.1.2"
+            },
+            "time": "2024-08-29T04:12:43+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.3",

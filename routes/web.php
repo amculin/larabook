@@ -14,3 +14,8 @@ Route::get('/publishers', [App\Http\Controllers\HomeController::class, 'index'])
 Route::get('/books', [App\Http\Controllers\HomeController::class, 'index'])->name('book');
 Route::get('/borrowings', [App\Http\Controllers\HomeController::class, 'index'])->name('borrow');
 Route::get('/returnings', [App\Http\Controllers\HomeController::class, 'index'])->name('return');
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/members', App\Http\Controllers\MemberController::class);
+});
