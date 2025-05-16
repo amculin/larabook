@@ -22,7 +22,9 @@ class UpdateMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'full_name' => 'required|string',
+            'birth_date' => 'required|date',
+            'address' => 'required'
         ];
     }
 }

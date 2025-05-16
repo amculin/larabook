@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -49,7 +50,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarMasterDropdown">
-                                    <a class="dropdown-item" href="{{ route('user') }}">
+                                    <a class="dropdown-item" href="{{ route('members.index') }}">
                                         {{ __('Member') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('publisher') }}">

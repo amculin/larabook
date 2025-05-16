@@ -33,7 +33,7 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required|integer|digits:16',
+            'id' => 'required|integer|digits:16|unique:members',
             'full_name' => 'required|string',
             'birth_date' => 'required|date',
             'address' => 'required'
@@ -47,7 +47,7 @@ class MemberController extends Controller
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->route('member.index');
+        return redirect()->route('members.index');
     }
 
     /**
@@ -63,7 +63,7 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        return view('members.edit', ['member' => $member]);
     }
 
     /**
@@ -71,7 +71,13 @@ class MemberController extends Controller
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        $member->fill($request->validated());
+
+        $member->updated_at = date('Y-m-d H:i:s');
+
+        $member->save();
+    
+        return redirect()->route('members.index');
     }
 
     /**
