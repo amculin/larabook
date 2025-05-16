@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -23,7 +24,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $publishers = Publisher::pluck('name', 'id');
+
+        return view('books.create', compact('publishers'));
     }
 
     /**
@@ -31,7 +34,23 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'publisher_id' => 'required|integer|exists:publishers,id',
+            'dimension_length' => 'required|integer',
+            'dimension_height' => 'required|integer',
+            'stock' => 'required|integer',
+        ]);
+
+        Book::create([
+            'title' => $request->title,
+            'publisher_id' => $request->publisher_id,
+            'dimension' => $request->dimension_length . 'cm x ' . $request->dimension_height . 'cm',
+            'stock' => $request->stock,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->route('books.index');
     }
 
     /**
