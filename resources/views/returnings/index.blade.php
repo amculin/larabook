@@ -35,7 +35,7 @@
                                 <td>{{ $returnings->firstItem() + $index }}</td>
                                 <td>{{ $returning->book->title }}</td>
                                 <td>{{ $returning->member->full_name }}</td>
-                                <td>{{ $returning->created_at }}</td>
+                                <td>{{ $returning->updated_at }}</td>
                                 <td style="display: inline-flex;">
                                     <a href="{{ route('returnings.edit', $returning) }}" class="text-blue-500 btn"><i class="bi bi-pencil-square"></i></a> 
                                     <form action="{{ route('returnings.destroy', $returning) }}" method="POST" class="inline">
